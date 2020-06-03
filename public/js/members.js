@@ -6,8 +6,4 @@ $(document).ready(() => {
     const userId = data.id;
     const postButton = $("#newPost");
 
-    postButton.append(
-      "<a href='/newpost?User_id=" + userId + "'>Create a Post</a>"
-    );
-  });
-});
+    
