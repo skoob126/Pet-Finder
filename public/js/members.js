@@ -6,10 +6,12 @@ $(document).ready(() => {
   $.get("/api/user_data").then(data => {
     $(".member-name").text(data.email);
     const userId = data.id;
-    const postButton = $("#newPost");
+    const postButton = $(".navbar-header");
 
     postButton.append(
-      "<a href='/newpost?User_id=" + userId + "'>Create a Post</a>"
+      "<a class='navbar-brand' href='/newpost?User_id=" +
+        userId +
+        "'>Create a Post</a>"
     );
   });
 
@@ -42,7 +44,7 @@ $(document).ready(() => {
   }
   // This function constructs a post's HTML
   function createNewRow(post) {
-    const newPostCard = $(`<div class="card">
+    const newPostCard = $(`<div class="mt-3 card" style="border-radius: 2em">
       <div class="card-header">
       <h4 class="card-title">${post.title}</h4>
       <h6 class="card-location">${post.location}</h6>
