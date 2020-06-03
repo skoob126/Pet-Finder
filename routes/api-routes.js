@@ -69,4 +69,15 @@ module.exports = function(app) {
       });
     }
   });
+
+  // GET route for getting all of the posts
+  app.get("/api/posts/", (req, res) => {
+    db.Post.findAll({}).then((data, err) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.json(data);
+      }
+    });
+  });
 };
