@@ -2,6 +2,7 @@ $(document).ready(() => {
   // Gets an optional query string from our url (i.e. ?post_id=23)
   const url = window.location.search;
   let postId;
+  let userId;
   // Sets a flag for whether or not we're updating a post to be false initially
   let updating = false;
 
@@ -10,7 +11,10 @@ $(document).ready(() => {
   if (url.indexOf("?post_id=") !== -1) {
     postId = url.split("=")[1];
     getPostData(postId);
+  } else if (url.indexOf("?User_id=") !== -1) {
+    userId = url.split("=")[1];
   }
+  console.log(userId);
   // ---------------Have not changed code above this line to handle editing a new post ---------------
 
   // Getting jQuery references to the post inputs
@@ -47,7 +51,8 @@ $(document).ready(() => {
       email: emailInput.val().trim(),
       body: bodyInput.val().trim(),
       petType: petSelect.val().trim(),
-      reward: rewardInput.val().trim()
+      reward: rewardInput.val().trim(),
+      userId: userId
     };
 
     console.log(newPost);

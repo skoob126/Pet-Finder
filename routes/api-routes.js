@@ -30,6 +30,27 @@ module.exports = function(app) {
       });
   });
 
+  app.post("/api/posts/", (req, res) => {
+    console.log(req.body);
+    db.Post.create({
+      title: req.body.title,
+      location: req.body.location,
+      phone: req.body.phone,
+      email: req.body.email,
+      body: req.body.body,
+      petType: req.body.petType,
+      reward: req.body.reward,
+      UserId: req.body.userId
+    })
+      .then(data => {
+        res.json(data);
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(401).json(err);
+      });
+  });
+
   // Route for logging user out
   app.get("/logout", (req, res) => {
     req.logout();
