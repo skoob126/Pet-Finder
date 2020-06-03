@@ -21,13 +21,11 @@ $(document).ready(() => {
   const petForm = $("#petForm");
   const titleInput = $("#title");
   const locationInput = $("#location");
-  const phoneInput = $("#phone");
   const emailInput = $("#email");
   const bodyInput = $("#body");
-  const petSelect = $("#petType");
-  const rewardInput = $("#reward");
+  const categorySelect = $("#category");
   // Giving the petSelect a default value
-  petSelect.val("Other");
+  categorySelect.val("Lost Pet");
   // Adding an event listener for when the form is submitted
   $(petForm).on("submit", event => {
     event.preventDefault();
@@ -36,10 +34,9 @@ $(document).ready(() => {
     if (
       !titleInput.val().trim() ||
       !locationInput.val().trim() ||
-      !phoneInput.val().trim() ||
       !emailInput.val().trim() ||
       !bodyInput.val().trim() ||
-      !petSelect.val().trim()
+      !categorySelect.val().trim()
     ) {
       return;
     }
@@ -47,15 +44,11 @@ $(document).ready(() => {
     const newPost = {
       title: titleInput.val().trim(),
       location: locationInput.val().trim(),
-      phone: phoneInput.val().trim(),
       email: emailInput.val().trim(),
       body: bodyInput.val().trim(),
-      petType: petSelect.val().trim(),
-      reward: rewardInput.val().trim(),
+      category: categorySelect.val().trim(),
       userId: userId
     };
-
-    console.log(newPost);
 
     // If we're updating a post run updatePost to update a post
     // Otherwise run submitPost to create a whole new post
