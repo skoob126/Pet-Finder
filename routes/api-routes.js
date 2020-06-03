@@ -35,11 +35,9 @@ module.exports = function(app) {
     db.Post.create({
       title: req.body.title,
       location: req.body.location,
-      phone: req.body.phone,
       email: req.body.email,
       body: req.body.body,
-      petType: req.body.petType,
-      reward: req.body.reward,
+      category: req.body.category,
       UserId: req.body.userId
     })
       .then(data => {
