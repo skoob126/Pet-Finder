@@ -1,11 +1,12 @@
 $(document).ready(() => {
   const golbalContainer = $("#globalPost");
   const userContainer = $("#userPost");
+  let userId;
   // This file just does a GET request to figure out which user is logged in
   // and updates the HTML on the page
   $.get("/api/user_data").then(data => {
     $(".member-name").text(data.email);
-    const userId = data.id;
+    userId = data.id;
     const postButton = $(".navbar-header");
 
     postButton.append(
@@ -15,16 +16,12 @@ $(document).ready(() => {
     );
   });
 
-  function getUserPosts(category) {
-    let categoryString = category || "";
-    if (categoryString) {
-      categoryString = "/category/" + categoryString;
-    }
-    $.get("/api/posts" + categoryString, data => {
+  function getUserPosts() {
+    $.get("/api/posts/user", data => {
       console.log(data);
       posts = data;
       if (!posts || !posts.length) {
-        displayEmpty();
+        userDisplayEmpty();
       } else {
         initializeUserRows();
       }
@@ -37,7 +34,6 @@ $(document).ready(() => {
       categoryString = "/category/" + categoryString;
     }
     $.get("/api/posts" + categoryString, data => {
-      console.log(data);
       posts = data;
       if (!posts || !posts.length) {
         displayEmpty();

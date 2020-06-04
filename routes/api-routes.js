@@ -81,7 +81,7 @@ module.exports = function(app) {
     });
   });
   app.get("/api/posts/user", (req, res) => {
-    db.Post.findAll({ where: { UserId: req.params.id } }).then((data, err) => {
+    db.Post.findAll({ where: { UserId: req.user.id } }).then((data, err) => {
       if (err) {
         console.log(err);
       } else {
