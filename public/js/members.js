@@ -118,6 +118,12 @@ $(document).ready(() => {
       });
   }
 
+  function handlePostEdit() {
+    const id = $(this).val();
+    console.log(id);
+    window.location.href = "/newpost?post_id=" + id;
+  }
+
   function userDisplayEmpty() {
     userContainer.empty();
     // eslint-disable-next-line quotes
@@ -126,4 +132,5 @@ $(document).ready(() => {
   }
 
   $(document).on("click", "button.delete", handlePostDelete);
+  $(document).on("click", "button.edit", handlePostEdit);
 });

@@ -14,7 +14,7 @@ $(document).ready(() => {
   } else if (url.indexOf("?User_id=") !== -1) {
     userId = url.split("=")[1];
   }
-  console.log(userId);
+
   // ---------------Have not changed code above this line to handle editing a new post ---------------
 
   // Getting jQuery references to the post inputs
@@ -69,13 +69,16 @@ $(document).ready(() => {
   // ---------------Have not changed code below this line to handle editing a new post ---------------
 
   // Gets post data for a post if we're editing
-  function getPostData(id) {
-    $.get("/api/posts/" + id, data => {
+  function getPostData(postId) {
+    $.get("/api/posts/" + postId).then(data => {
       if (data) {
         // If this post exists, prefill our cms forms with its data
         titleInput.val(data.title);
         bodyInput.val(data.body);
-        postCategorySelect.val(data.category);
+        emailInput.val(data.email);
+        bodyInput.val(data.body);
+        locationInput.val(data.location);
+        categorySelect.val(data.category);
         // If we have a post with this id, set a flag for us to know to update the post
         // when we hit submit
         updating = true;
@@ -93,4 +96,5 @@ $(document).ready(() => {
       window.location.href = "/blog";
     });
   }
+  getPostData();
 });
