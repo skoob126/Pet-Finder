@@ -89,4 +89,13 @@ module.exports = function(app) {
       }
     });
   });
+  app.delete("/api/posts/:id", (req, res) => {
+    db.Post.destroy({ where: { id: req.params.id } }).then((data, err) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.json(data);
+      }
+    });
+  });
 };
