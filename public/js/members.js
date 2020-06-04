@@ -1,6 +1,7 @@
 $(document).ready(() => {
   const golbalContainer = $("#globalPost");
   const userContainer = $("#userPost");
+  const postCategory = $("#category");
   let userId;
   // This file just does a GET request to figure out which user is logged in
   // and updates the HTML on the page
@@ -138,7 +139,12 @@ $(document).ready(() => {
     );
     golbalContainer.append(messageH2);
   }
-
+  // This function handles reloading new posts when the category changes
+  function handleCategoryChange() {
+    const newPostCategory = $(this).val();
+    getGlobalPosts(newPostCategory);
+  }
   $(document).on("click", "button.delete", handlePostDelete);
   $(document).on("click", "button.edit", handlePostEdit);
+  postCategory.on("change", handleCategoryChange);
 });
