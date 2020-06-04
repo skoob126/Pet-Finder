@@ -107,4 +107,15 @@ module.exports = function(app) {
       }
     });
   });
+  app.put("/api/posts", (req, res) => {
+    db.Post.update(req.body, { where: { id: req.body.id } }).then(
+      (data, err) => {
+        if (err) {
+          console.log(err);
+        } else {
+          res.json(data);
+        }
+      }
+    );
+  });
 };

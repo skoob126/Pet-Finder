@@ -66,7 +66,6 @@ $(document).ready(() => {
       window.location.href = "/members";
     });
   }
-  // ---------------Have not changed code below this line to handle editing a new post ---------------
 
   // Gets post data for a post if we're editing
   function getPostData(postId) {
@@ -93,7 +92,7 @@ $(document).ready(() => {
       url: "/api/posts",
       data: post
     }).then(() => {
-      window.location.href = "/blog";
+      window.location.href = "/members";
     });
   }
   getPostData();
