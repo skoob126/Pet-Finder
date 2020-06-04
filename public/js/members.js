@@ -70,8 +70,8 @@ $(document).ready(() => {
   }
   // This function constructs a post's HTML
   function createNewRow(post) {
-    const newPostCard = $(`<div class="mt-3 card" style="border-radius: 2em">
-      <div class="card-header">
+    const newPostCard = $(`<div class="mb-5 card" style="border-radius: 2em">
+    <div class="card-header" style="border-top-right-radius: 2em; border-top-left-radius: 2em">
       <h4 class="card-title">${post.title}</h4>
       <h6 class="card-location">${post.location}</h6>
       <h6 class="card-category">${post.category}</h6>
@@ -86,8 +86,8 @@ $(document).ready(() => {
   }
 
   function createNewUserRow(post) {
-    const newPostCard = $(`<div class="mt-3 card" style="border-radius: 2em">
-      <div class="card-header">
+    const newPostCard = $(`<div class="mb-5 card" style="border-radius: 2em">
+      <div class="card-header" style="border-top-right-radius: 2em; border-top-left-radius: 2em">
       <h4 class="card-title">${post.title}</h4>
       <h6 class="card-location">${post.location}</h6>
       <h6 class="card-category">${post.category}</h6>
@@ -129,6 +129,14 @@ $(document).ready(() => {
     // eslint-disable-next-line quotes
     const messageH2 = $(`<h2 style="text-align:center">No User Posts</h2>`);
     userContainer.append(messageH2);
+  }
+  function displayEmpty() {
+    golbalContainer.empty();
+    const messageH2 = $(
+      // eslint-disable-next-line quotes
+      `<h2 style="text-align:center">No Community Posts</h2>`
+    );
+    golbalContainer.append(messageH2);
   }
 
   $(document).on("click", "button.delete", handlePostDelete);
