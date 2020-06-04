@@ -1,9 +1,11 @@
 # Pet Finder
+<a href="https://github.com/skoob126/Pet-Finder/graphs/contributors">
+  <img src="https://contributors-img.web.app/image?repo=skoob126/Pet-Finder" />
+</a>
 
 ## Description
-An application to help you keep your plant alive and green. You can search for plants and get information for taking care of your plant such as watering, temperature, or amount of shade needed. You can create an account and save your plants to a collection. Saving a plant to a collection will generate more information about that plant such as type, family, and soil fertility.
 
-This is an application that can can you or other people in your area find their missing pets!s
+This is an easy to use application that can help you or other people in your area find their missing pets!Just go to the website and create an account in order to get access to the website. After your account is created, you can then post your lost pet, or a found pet to the forum. 
 
 
 ## [Try it yourself!](*HEROKU LINK NEEDED*)
