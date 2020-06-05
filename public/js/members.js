@@ -1,6 +1,7 @@
 $(document).ready(() => {
   const golbalContainer = $("#globalPost");
   const userContainer = $("#userPost");
+  const postCategory = $("#category");
   let userId;
   // This file just does a GET request to figure out which user is logged in
   // and updates the HTML on the page
@@ -70,8 +71,8 @@ $(document).ready(() => {
   }
   // This function constructs a post's HTML
   function createNewRow(post) {
-    const newPostCard = $(`<div class="mt-3 card" style="border-radius: 2em">
-      <div class="card-header">
+    const newPostCard = $(`<div class="mb-5 card" style="border-radius: 2em">
+    <div class="card-header" style="border-top-right-radius: 2em; border-top-left-radius: 2em">
       <h4 class="card-title">${post.title}</h4>
       <h6 class="card-location">${post.location}</h6>
       <h6 class="card-category">${post.category}</h6>
@@ -86,8 +87,8 @@ $(document).ready(() => {
   }
 
   function createNewUserRow(post) {
-    const newPostCard = $(`<div class="mt-3 card" style="border-radius: 2em">
-      <div class="card-header">
+    const newPostCard = $(`<div class="mb-5 card" style="border-radius: 2em">
+      <div class="card-header" style="border-top-right-radius: 2em; border-top-left-radius: 2em">
       <h4 class="card-title">${post.title}</h4>
       <h6 class="card-location">${post.location}</h6>
       <h6 class="card-category">${post.category}</h6>
@@ -130,7 +131,20 @@ $(document).ready(() => {
     const messageH2 = $(`<h2 style="text-align:center">No User Posts</h2>`);
     userContainer.append(messageH2);
   }
-
+  function displayEmpty() {
+    golbalContainer.empty();
+    const messageH2 = $(
+      // eslint-disable-next-line quotes
+      `<h2 style="text-align:center">No Community Posts</h2>`
+    );
+    golbalContainer.append(messageH2);
+  }
+  // This function handles reloading new posts when the category changes
+  function handleCategoryChange() {
+    const newPostCategory = $(this).val();
+    getGlobalPosts(newPostCategory);
+  }
   $(document).on("click", "button.delete", handlePostDelete);
   $(document).on("click", "button.edit", handlePostEdit);
+  postCategory.on("change", handleCategoryChange);
 });
