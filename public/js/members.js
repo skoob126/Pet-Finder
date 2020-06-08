@@ -17,9 +17,20 @@ $(document).ready(() => {
     );
   });
 
+  $.get("/api/locations").then((data, err) => {
+    if (err) {
+      console.log(err);
+    }
+    const cities = data.map(data => data.location);
+    const noDuplicateCity = Array.from(new Set(cities));
+    const locations = $("#locations");
+    noDuplicateCity.forEach(city => {
+      locations.append(`<option value="${city}">${city}</option>`);
+    });
+  });
+
   function getUserPosts() {
     $.get("/api/posts/user", data => {
-      console.log(data);
       posts = data;
       if (!posts || !posts.length) {
         userDisplayEmpty();
