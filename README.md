@@ -8,7 +8,7 @@
 This is an easy to use application that can help you or other people in your area find their missing pets!Just go to the website and create an account in order to get access to the website. After your account is created, you can then post your lost pet, or a found pet to the forum. 
 
 
-## [Try it yourself!](*HEROKU LINK NEEDED*)
+## [Try it yourself!](https://dashboard.heroku.com/apps/pet-finder111)
 The following image shows a glimpse of the application:
 ![workout app](assets/readmeimage.png)
 

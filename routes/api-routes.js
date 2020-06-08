@@ -80,13 +80,53 @@ module.exports = function(app) {
       }
     });
   });
+  app.get("/api/posts/category/:category", (req, res) => {
+    db.Post.findAll({ where: { category: req.params.category } }).then(
+      (data, err) => {
+        if (err) {
+          console.log(err);
+        } else {
+          res.json(data);
+        }
+      }
+    );
+  });
   app.get("/api/posts/user", (req, res) => {
-    db.Post.findAll({ where: { UserId: req.params.id } }).then((data, err) => {
+    db.Post.findAll({ where: { UserId: req.user.id } }).then((data, err) => {
       if (err) {
         console.log(err);
       } else {
         res.json(data);
       }
     });
+  });
+  app.get("/api/posts/:id", (req, res) => {
+    db.Post.findOne({ where: { id: req.params.id } }).then((data, err) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.json(data);
+      }
+    });
+  });
+  app.delete("/api/posts/:id", (req, res) => {
+    db.Post.destroy({ where: { id: req.params.id } }).then((data, err) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.json(data);
+      }
+    });
+  });
+  app.put("/api/posts", (req, res) => {
+    db.Post.update(req.body, { where: { id: req.body.id } }).then(
+      (data, err) => {
+        if (err) {
+          console.log(err);
+        } else {
+          res.json(data);
+        }
+      }
+    );
   });
 };
