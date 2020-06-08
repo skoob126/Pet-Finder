@@ -70,16 +70,6 @@ module.exports = function(app) {
     }
   });
 
-  app.get("/api/locations", (req, res) => {
-    db.Post.findAll({}).then((data, err) => {
-      if (err) {
-        console.log(err);
-      } else {
-        res.json(data);
-      }
-    });
-  });
-
   // GET route for getting all of the posts
   app.get("/api/posts/", (req, res) => {
     db.Post.findAll({}).then((data, err) => {

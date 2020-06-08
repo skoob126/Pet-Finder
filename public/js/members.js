@@ -1,8 +1,12 @@
+/* eslint-disable quotes */
 $(document).ready(() => {
   const golbalContainer = $("#globalPost");
   const userContainer = $("#userPost");
   const postCategory = $("#category");
+  const locations = $("#locations");
   let userId;
+  let newLocation = "All Locations";
+  let posts;
   // This file just does a GET request to figure out which user is logged in
   // and updates the HTML on the page
   $.get("/api/user_data").then(data => {
@@ -15,18 +19,6 @@ $(document).ready(() => {
         userId +
         "'>Create a Post</a>"
     );
-  });
-
-  $.get("/api/locations").then((data, err) => {
-    if (err) {
-      console.log(err);
-    }
-    const cities = data.map(data => data.location);
-    const noDuplicateCity = Array.from(new Set(cities));
-    const locations = $("#locations");
-    noDuplicateCity.forEach(city => {
-      locations.append(`<option value="${city}">${city}</option>`);
-    });
   });
 
   function getUserPosts() {
@@ -50,7 +42,9 @@ $(document).ready(() => {
       if (!posts || !posts.length) {
         displayEmpty();
       } else {
-        initializeGlobalRows();
+        initializeGlobalRows(posts);
+        // each time a user changes a category refresh the location dropdown to only include the location in the category
+        renderLocations(posts);
       }
     });
   }
@@ -72,11 +66,11 @@ $(document).ready(() => {
   getGlobalPosts();
   // InitializeGlobalRows handles appending all of our constructed post HTML inside
   // blogContainer
-  function initializeGlobalRows() {
+  function initializeGlobalRows(filteredPosts) {
     golbalContainer.empty();
     const postsToAdd = [];
-    for (let i = 0; i < posts.length; i++) {
-      postsToAdd.push(createNewRow(posts[i]));
+    for (let i = 0; i < filteredPosts.length; i++) {
+      postsToAdd.push(createNewRow(filteredPosts[i]));
     }
     golbalContainer.append(postsToAdd);
   }
@@ -117,7 +111,6 @@ $(document).ready(() => {
 
   function handlePostDelete() {
     const id = $(this).val();
-    console.log(id);
     $.ajax({
       method: "DELETE",
       url: "/api/posts/" + id
@@ -132,7 +125,6 @@ $(document).ready(() => {
 
   function handlePostEdit() {
     const id = $(this).val();
-    console.log(id);
     window.location.href = "/newpost?post_id=" + id;
   }
 
@@ -155,7 +147,31 @@ $(document).ready(() => {
     const newPostCategory = $(this).val();
     getGlobalPosts(newPostCategory);
   }
+
+  function handleLocationCahange() {
+    newLocation = $(this).val();
+    if (newLocation === "All Locations") {
+      initializeGlobalRows(posts);
+    } else {
+      const byCity = posts.filter(post => post.location === newLocation);
+      initializeGlobalRows(byCity);
+    }
+  }
+
   $(document).on("click", "button.delete", handlePostDelete);
   $(document).on("click", "button.edit", handlePostEdit);
   postCategory.on("change", handleCategoryChange);
+  locations.on("change", handleLocationCahange);
+
+  function renderLocations(filteredPosts) {
+    locations.empty();
+    locations.append(
+      `<option selected value="All Locations">All Locations</option>`
+    );
+    const cities = filteredPosts.map(filteredPosts => filteredPosts.location);
+    const noDuplicateCity = Array.from(new Set(cities));
+    noDuplicateCity.forEach(city => {
+      locations.append(`<option value="${city}">${city}</option>`);
+    });
+  }
 });
