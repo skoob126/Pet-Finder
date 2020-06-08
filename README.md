@@ -9,8 +9,10 @@ This is an easy to use application that can help you or other people in your are
 
 
 ## [Try it yourself!](https://dashboard.heroku.com/apps/pet-finder111)
-The following image shows a glimpse of the application:
-![workout app](assets/readmeimage.png)
+The following image shows a glimpse of the application: <br>
+![Farmers Market Finder Demo](./public/assets/petfinder.gif)
+
+
 
 ## Getting Started
 This is a simple application that runs right in the browser, no installation or downloads needed.
