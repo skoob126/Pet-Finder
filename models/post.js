@@ -28,6 +28,13 @@ module.exports = function (sequelize, DataTypes) {
         len: [1, 500],
       },
     },
+    image: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      validate: {
+        len: [1, 500],
+      },
+    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,

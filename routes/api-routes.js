@@ -37,6 +37,7 @@ module.exports = function(app) {
       location: req.body.location,
       email: req.body.email,
       body: req.body.body,
+      image: req.body.image,
       category: req.body.category,
       UserId: req.body.userId
     })
