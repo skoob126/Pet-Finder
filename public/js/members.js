@@ -84,6 +84,7 @@ $(document).ready(() => {
       </div>
       <div class="card-body">
         <p class="card-text">${post.body}</p>
+        <img src="${post.image}" alt="" style="width:200px; height:200px">
         <br />
         <a href="mailto:${post.email}">${post.email}</a>
       </div>
@@ -97,11 +98,12 @@ $(document).ready(() => {
       <h4 class="card-title">${post.title}</h4>
       <h6 class="card-location">${post.location}</h6>
       <h6 class="card-category">${post.category}</h6>
-      <button type="button" value="${post.id}" class="btn btn-primary edit">Edit</button>
+     <button type="button" value="${post.id}" class="btn btn-primary edit">Edit</button>
       <button type="button" value="${post.id}" class="btn btn-danger delete" >Delete</button>
       </div>
       <div class="card-body">
         <p class="card-text">${post.body}</p>
+        <img src="${post.image}" alt="" style="width:200px; height:200px">
         <br />
         <a href="mailto:${post.email}">${post.email}</a>
       </div>

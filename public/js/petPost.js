@@ -23,6 +23,7 @@ $(document).ready(() => {
   const locationInput = $("#location");
   const emailInput = $("#email");
   const bodyInput = $("#body");
+  const uploadImageInput = $("#image");
   const categorySelect = $("#category");
   // Giving the petSelect a default value
   categorySelect.val("Lost Pet");
@@ -36,6 +37,7 @@ $(document).ready(() => {
       !locationInput.val().trim() ||
       !emailInput.val().trim() ||
       !bodyInput.val().trim() ||
+      !uploadImageInput.val().trim() ||
       !categorySelect.val().trim()
     ) {
       return;
@@ -46,10 +48,11 @@ $(document).ready(() => {
       location: locationInput.val().trim(),
       email: emailInput.val().trim(),
       body: bodyInput.val().trim(),
+      image: uploadImageInput.val().trim(),
       category: categorySelect.val().trim(),
       userId: userId
     };
-
+    console.log(newPost);
     // If we're updating a post run updatePost to update a post
     // Otherwise run submitPost to create a whole new post
     if (updating) {
@@ -78,6 +81,7 @@ $(document).ready(() => {
         bodyInput.val(data.body);
         locationInput.val(data.location);
         categorySelect.val(data.category);
+        uploadImageInput.val(data.image);
         // If we have a post with this id, set a flag for us to know to update the post
         // when we hit submit
         updating = true;
