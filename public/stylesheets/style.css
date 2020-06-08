@@ -15,10 +15,19 @@ form.petPost {
  background-size: cover;
 }
 
+#page1.navbar{
+background-image: url(https://png.pngtree.com/thumb_back/fw800/back_our/20190621/ourmid/pngtree-literary-style-small-fresh-cute-pet-border-background-image_197370.jpg);
 
-#page1.h2{
-font-style: italic;
 }
+
+
+
+#page2{
+background-image: url(https://lh3.googleusercontent.com/proxy/aDvuss-KbLXUiAB5jaJjBWz1Pdu3eiRkaL7ej3PkY2snn8fiHNZjhX6457w_1j_OY51XVwthQ1x_Xhm4ZDUUxmQNTeJhNnwaNQON);
+background-repeat: no-repeat;
+background-size: cover;
+}
+
 
 #page3{
 background-color: white;
