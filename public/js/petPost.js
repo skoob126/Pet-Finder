@@ -37,7 +37,6 @@ $(document).ready(() => {
       !locationInput.val().trim() ||
       !emailInput.val().trim() ||
       !bodyInput.val().trim() ||
-      !uploadImageInput.val().trim() ||
       !categorySelect.val().trim()
     ) {
       return;
