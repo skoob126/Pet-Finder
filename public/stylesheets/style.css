@@ -15,15 +15,19 @@ form.petPost {
  background-size: cover;
 }
 
+#page1.navbar{
+background-image: url(https://png.pngtree.com/thumb_back/fw800/back_our/20190621/ourmid/pngtree-literary-style-small-fresh-cute-pet-border-background-image_197370.jpg);
 
-#page1.h2{
-font-style: italic;
 }
+
+
 
 #page2{
-background-image: url(https://images.squarespace-cdn.com/content/v1/5d794bbb39bf6624d06d8db9/1569370327716-LHISRUAR81JA3NNY8RIN/ke17ZwdGBToddI8pDm48kIGCfKgzE7A8m0OQo9Qki4UUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYy7Mythp_T-mtop-vrsUOmeInPi9iDjx9w8K4ZfjXt2diXiAy5s7XJ4uGjaXufUmsHvfwj_y8tOPuoksvkcs3_bCjLISwBs8eEdxAxTptZAUg/dog-banner-with-yellow-background-2.png?format=2500w );
-
+background-image: url(https://lh3.googleusercontent.com/proxy/aDvuss-KbLXUiAB5jaJjBWz1Pdu3eiRkaL7ej3PkY2snn8fiHNZjhX6457w_1j_OY51XVwthQ1x_Xhm4ZDUUxmQNTeJhNnwaNQON);
+background-repeat: no-repeat;
+background-size: cover;
 }
+
 
 #page3{
 background-color: white;
