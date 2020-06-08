@@ -29,7 +29,7 @@ module.exports = function(app) {
         res.status(401).json(err);
       });
   });
-
+  // Route for creating a new post from the pet post page
   app.post("/api/posts/", (req, res) => {
     console.log(req.body);
     db.Post.create({
@@ -81,6 +81,8 @@ module.exports = function(app) {
       }
     });
   });
+
+  // Get route if Lost Pet or Found Pet category are selected
   app.get("/api/posts/category/:category", (req, res) => {
     db.Post.findAll({ where: { category: req.params.category } }).then(
       (data, err) => {
@@ -92,6 +94,8 @@ module.exports = function(app) {
       }
     );
   });
+
+  // GET route for getting all of the posts by the signed in user
   app.get("/api/posts/user", (req, res) => {
     db.Post.findAll({ where: { UserId: req.user.id } }).then((data, err) => {
       if (err) {
@@ -101,6 +105,8 @@ module.exports = function(app) {
       }
     });
   });
+
+  // Get for finding post to edit by post id
   app.get("/api/posts/:id", (req, res) => {
     db.Post.findOne({ where: { id: req.params.id } }).then((data, err) => {
       if (err) {
@@ -110,6 +116,8 @@ module.exports = function(app) {
       }
     });
   });
+
+  // Delete post by selected id
   app.delete("/api/posts/:id", (req, res) => {
     db.Post.destroy({ where: { id: req.params.id } }).then((data, err) => {
       if (err) {
@@ -119,6 +127,8 @@ module.exports = function(app) {
       }
     });
   });
+
+  // handeling the edit of a post by the id
   app.put("/api/posts", (req, res) => {
     db.Post.update(req.body, { where: { id: req.body.id } }).then(
       (data, err) => {
