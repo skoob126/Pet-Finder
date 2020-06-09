@@ -13,7 +13,7 @@ The following image shows a glimpse of the application: <br>
 ![Pet Finder Demo](./public/assets/petfinder.gif)
 
 ## Getting Started
-This is a simple application that runs right in the browser, no installation or downloads needed.
+This is a simple application that runs right in the browser, no installation or downloads needed!
 
 ## Built With:
 MySQL - database<br>
