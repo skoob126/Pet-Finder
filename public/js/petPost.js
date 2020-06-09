@@ -57,6 +57,7 @@ $(document).ready(() => {
       updatePost(newPost);
     } else {
       submitPost(newPost);
+      postEmail(newPost);
     }
   });
 
@@ -65,6 +66,10 @@ $(document).ready(() => {
     $.post("/api/posts/", Post, () => {
       window.location.href = "/members";
     });
+  }
+  // sends user an email after post is created
+  function postEmail(Post) {
+    $.post("/api/email/", Post);
   }
 
   // gets post data for a post if we're editing

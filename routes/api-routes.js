@@ -1,6 +1,8 @@
 // Requiring our models and passport as we've configured it
 const db = require("../models");
 const passport = require("../config/passport");
+const nodemailer = require("nodemailer");
+require("dotenv").config();
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -48,6 +50,38 @@ module.exports = function(app) {
         console.log(err);
         res.status(401).json(err);
       });
+  });
+
+  app.post("/api/email/", (req, res) => {
+    // creating nodemailer transport
+    const transport = nodemailer.createTransport({
+      host: "smtp.mailtrap.io",
+      port: 2525,
+      auth: {
+        user: process.env.mail_user,
+        pass: process.env.mail_pass
+      }
+    });
+    // creating the email message
+    const message = {
+      from: req.body.email,
+      to: req.body.email,
+      subject: "New Post on Pet Finder",
+      html: `<h3>Thank you for submitting your post on Pet Finder 
+      helping pet owners find their lost pets since yesterday</h3>
+      <h3>Post Title:</h3>
+      <h4>${req.body.title}</h4>
+      <h3>Post Message:</h3>
+      <h4>${req.body.body}</h4>
+      `
+    };
+    transport.sendMail(message, (err, data) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.json(data);
+      }
+    });
   });
 
   // Route for logging user out
